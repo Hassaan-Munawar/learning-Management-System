@@ -1,10 +1,9 @@
-// import HeroSection from "@/components/HeroSection/HeroSection";
+import HeroSection from "@/components/HeroSection/HeroSection";
 
 export default function Home() {
   return (
   <div>
-    {/* <HeroSection /> */}
-    hi
+    <HeroSection />
   </div>
   );
 }
