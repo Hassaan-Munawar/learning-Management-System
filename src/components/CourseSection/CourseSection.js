@@ -15,7 +15,7 @@ if (status === "loading") {
 }
 
   return (
-    <section className="container bg-blue-600 mx-auto py-12 px-4">
+    <section className="bg-blue-600 py-12 px-4">
       <div className="flex justify-center items-center mb-10">
         <h1 className="text-3xl md:text-4xl font-bold text-white mb-4 md:mb-0">Apply to our Latest Courses</h1>
       </div>
