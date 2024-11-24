@@ -112,7 +112,7 @@ function ApplicationForm({ admission, session, setOpen }) {
     const response = await addApplication(obj);
     if (response.error) {
       toast({
-        title: "Sorry, You already applied in this course",
+        title: "Sorry, You have already applied in this course",
       });
     } else {
       toast({

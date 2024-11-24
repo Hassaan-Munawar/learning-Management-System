@@ -7,7 +7,7 @@ import Image from 'next/image'
 
 export function HeroSection() {
   return (
-    <section className="relative h-screen bg-gradient-to-br from-blue-900 to-indigo-800 py-20 px-6 text-center overflow-hidden">
+    <section className="relative min-h-screen bg-gradient-to-br from-blue-900 to-indigo-800 py-20 px-6 text-center overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0 opacity-20">
         <Image
