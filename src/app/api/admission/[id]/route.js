@@ -4,8 +4,7 @@ import { AdmissionModal } from "@/lib/modals/AdmissionModal";
 import { ApplicationModal } from "@/lib/modals/ApplicationModal";
 import { BatchModal } from "@/lib/modals/BatchModal";
 import { CourseModal } from "@/lib/modals/CourseModal";
-import User from "@/lib/modals/userModals";
-
+import { UserModal } from "@/lib/modals/UserModal";
 
 export async function GET(req,{ params }) {
   const id = params.id;
@@ -24,7 +23,7 @@ export async function GET(req,{ params }) {
     msg: "Admission Fetched Successfully",
     admission: {
       ...admissions,
-      applications,
+      applications
     },
   });
 }

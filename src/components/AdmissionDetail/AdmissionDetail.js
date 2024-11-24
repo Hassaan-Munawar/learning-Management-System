@@ -71,15 +71,15 @@ export default function AdmissionDetail({ admission }) {
               <div className="flex items-center gap-4">
                 <Avatar>
                   <AvatarImage
-                    src={application.user.profileImg}
-                    alt={application.user.fullname}
+                    src={application.user.image}
+                    alt={application.user.name}
                   />
                   <AvatarFallback>
-                    {application.user.fullname.charAt(0)}
+                    {application.user.name.charAt(0)}
                   </AvatarFallback>
                 </Avatar>
                 <div>
-                  <CardTitle>{application.user.fullname}</CardTitle>
+                  <CardTitle>{application.user.name}</CardTitle>
                   <CardDescription>{application.user.email}</CardDescription>
                 </div>
               </div>

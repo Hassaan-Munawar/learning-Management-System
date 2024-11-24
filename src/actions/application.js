@@ -21,7 +21,6 @@ export async function getApplications({
 }
 
 export async function addApplication(obj) {
-  console.log("Obj=>", obj);
 
   const batch = await fetch(`${process.env.BASE_URL}/api/application`, {
     method: "POST",

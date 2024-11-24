@@ -3,8 +3,7 @@ import { connectDB } from "@/lib/dbConnect";
 import { BatchModal } from "@/lib/modals/BatchModal";
 import { CourseModal } from "@/lib/modals/CourseModal";
 import { ApplicationModal } from "@/lib/modals/ApplicationModal";
-import User from "@/lib/modals/userModals";
-
+import { UserModal } from "@/lib/modals/UserModal";
 
 export async function POST(request) {
   await connectDB();

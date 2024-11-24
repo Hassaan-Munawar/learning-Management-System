@@ -3,8 +3,7 @@ import { AdmissionModal } from "@/lib/modals/AdmissionModal";
 import { ApplicationModal } from "@/lib/modals/ApplicationModal";
 import { BatchModal } from "@/lib/modals/BatchModal";
 import { CourseModal } from "@/lib/modals/CourseModal";
-import User from "@/lib/modals/userModals";
-
+import { UserModal } from "@/lib/modals/UserModal";
 export async function POST(request) {
   await connectDB();
   const obj = await request.json();
@@ -47,12 +46,17 @@ export async function GET(req) {
     if (searchParams.get("user")) {
       query.user = searchParams.get("user");
     }
-
-    const applications = await ApplicationModal.find(query)
+    let applications;
+    query ? applications = await ApplicationModal.find(query)
       .populate("course", "title")
       .populate("batch", "title")
       .populate("admission", "startDate endDate status")
-      .populate("user", "fullname email profileImg");
+      .populate("user", "name email image")
+      : applications = await ApplicationModal.find()
+        .populate("course", "title")
+        .populate("batch", "title")
+        .populate("admission", "startDate endDate status")
+        .populate("user", "name email image");
     return Response.json({
       error: false,
       msg: "Applications Fetched Successfully",

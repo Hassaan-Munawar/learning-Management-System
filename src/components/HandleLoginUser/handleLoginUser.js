@@ -1,11 +1,10 @@
 import { connectDB } from "@/lib/dbConnect";
-import User from "@/lib/modals/userModals";
-
+import { UserModal } from "@/lib/modals/UserModal";
 export default async function handleLoginUser(profile) {
   await connectDB(); 
-  let user = await User.findOne({ email: profile.email });
+  let user = await UserModal.findOne({ email: profile.email });
   if (!user) {
-    user = new User({
+    user = new UserModal({
       name: profile.name,
       email: profile.email,
       image: profile.picture,

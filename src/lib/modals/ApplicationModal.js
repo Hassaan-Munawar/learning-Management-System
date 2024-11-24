@@ -7,7 +7,7 @@ const applicationSchema = new Schema(
     course: { type: mongoose.Types.ObjectId, ref: "Course" },
     batch: { type: mongoose.Types.ObjectId, ref: "Batch" },
     admission: { type: mongoose.Types.ObjectId, ref: "Admission" },
-    user: { type: mongoose.Types.ObjectId, ref: "Users" },
+    user: { type: mongoose.Types.ObjectId, ref: "User" },
     info: {
       CNIC: String,
       DOB: String,
