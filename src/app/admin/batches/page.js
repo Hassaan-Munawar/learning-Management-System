@@ -8,9 +8,8 @@ export default async function Batches() {
   const { courses } = await getCourses();
 
   return (
-    <div className="min-h-screen p-10">
-      <div className="flex justify-between my-2">
-        <h1 className="text-3xl font-bold text-center">Batches</h1>
+    <div>
+      <div className="flex justify-end my-2">
         <BatchModal courses={courses} />
       </div>
 

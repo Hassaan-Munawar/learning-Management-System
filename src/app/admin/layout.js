@@ -1,12 +1,14 @@
-"use client";
-import { useSession } from "next-auth/react";
+
 import { redirect } from "next/navigation";
-import Sidebar from "@/components/SideBar/SideBar";
+import Sidebar from "@/components/SideBar/SideBar"
+import { getServerSession } from "next-auth";
+import { authOptions } from "../api/auth/[...nextauth]/route";
 
-export default function Layout({ children }) {
-  const { data: session } = useSession();
 
-  if (session?.user.name !== "Admin") {
+export default async function Layout({ children }) {
+  const session = await getServerSession(authOptions)
+
+  if (session?.user?.name !== "Admin") {
     redirect("/");
   }
   return (

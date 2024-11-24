@@ -37,7 +37,7 @@ import { useSession } from "next-auth/react";
 
 
 const formSchema = z.object({
-  CNIC: z.string().min(13).max(13, { message: "PLZ ADD VALID CNIC" }),
+  CNIC: z.string().min(13).max(13),
   DOB: z.string(),
   address: z.string().min(10).max(120),
 });
@@ -52,7 +52,9 @@ export function ApplicationModalForm({ admission}) {
     return (
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogTrigger asChild>
+          <div className="text-black">
           <Button variant="outline">Apply</Button>
+          </div>
         </DialogTrigger>
         <DialogContent className="sm:max-w-[425px]">
           <DialogHeader>
@@ -90,12 +92,7 @@ export function ApplicationModalForm({ admission}) {
 
 function ApplicationForm({ admission, session, setOpen }) {
   const form = useForm({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      CNIC: "4210196012222",
-      DOB: "2000-2-2",
-      address: "Gulshane Iqbaal Karachi",
-    },
+    resolver: zodResolver(formSchema)
   });
   const { toast } = useToast();
 
@@ -134,7 +131,7 @@ function ApplicationForm({ admission, session, setOpen }) {
             <FormItem>
               <FormLabel>CNIC</FormLabel>
               <FormControl>
-                <Input placeholder="CNIC" {...field} />
+                <Input placeholder="Enter your CNIC" {...field} />
               </FormControl>
               <FormDescription>Add valid CNIC number.</FormDescription>
               <FormMessage />
@@ -162,7 +159,7 @@ function ApplicationForm({ admission, session, setOpen }) {
             <FormItem>
               <FormLabel>Address</FormLabel>
               <FormControl>
-                <Textarea placeholder="address" {...field} />
+                <Textarea placeholder="Enter your address" {...field} />
               </FormControl>
               <FormDescription>Add valid address.</FormDescription>
               <FormMessage />

@@ -143,7 +143,6 @@ export const columns = [
   },
 ];
 
-// BatchesTable component
 export function AdmissionTable({ data }) {
   const [sorting, setSorting] = useState([]);
   const [columnFilters, setColumnFilters] = useState([]);

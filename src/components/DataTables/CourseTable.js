@@ -136,7 +136,7 @@ export const columns = [
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
             <DropdownMenuItem
-              onClick={() => navigator.clipboard.writeText(course.id)}
+              onClick={() => navigator.clipboard.writeText(course.title)}
             >
               Copy Course Name
             </DropdownMenuItem>
