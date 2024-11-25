@@ -2,8 +2,8 @@ import localFont from "next/font/local";
 import "./globals.css";
 import Header from "@/components/Header/Header";
 import { AuthProvider } from "./Providers";
-import { Toaster } from "@/components/ui/toaster";
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -30,7 +30,7 @@ export default function RootLayout({ children }) {
         <AuthProvider>
         <Header />
           {children}
-          <Toaster />
+          <ToastContainer />
         </AuthProvider>
       </body>
     </html>

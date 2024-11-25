@@ -31,9 +31,9 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Textarea } from "@/components/ui/textarea";
-import { useToast } from "@/hooks/use-toast";
 import { addApplication } from "@/actions/application";
 import { useSession } from "next-auth/react";
+import {toast } from 'react-toastify';
 
 
 const formSchema = z.object({
@@ -94,7 +94,6 @@ function ApplicationForm({ admission, session, setOpen }) {
   const form = useForm({
     resolver: zodResolver(formSchema)
   });
-  const { toast } = useToast();
 
   async function onSubmit(values) {
     const obj = {
@@ -108,13 +107,9 @@ function ApplicationForm({ admission, session, setOpen }) {
     };
     const response = await addApplication(obj);
     if (response.error) {
-      toast({
-        title: "Sorry, You have already applied in this course",
-      });
+      toast.error("Sorry, You have already applied in this course");
     } else {
-      toast({
-        title: "Your application is submitted successfully",
-      });
+      toast.success("Your application is submitted successfully");
     }
 
 
