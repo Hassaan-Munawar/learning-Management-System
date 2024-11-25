@@ -42,3 +42,11 @@ export async function updateApplication(id, status, admissionId) {
     revalidatePath(`/admin/admissions/${admissionId}`);
   }
 }
+
+export async function getApplicationsLength() {
+  let applications = await fetch(
+    `${process.env.BASE_URL}/api/application`
+  );
+  applications = await applications.json();
+  return applications;
+}

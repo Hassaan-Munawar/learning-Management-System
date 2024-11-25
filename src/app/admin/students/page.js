@@ -1,8 +1,8 @@
-import { UserModal } from "@/lib/modals/UserModal"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { getUsers } from "@/actions/users";
 
 export default async function Students(){
-    const allStudents = await UserModal.find()
+    const {users} = await getUsers()
 
     return(
         <section className="bg-white rounded-md shadow-md mt-6">
@@ -20,7 +20,7 @@ export default async function Students(){
             </thead>
             <tbody>
               {
-                allStudents.map((data) => {
+                users.map((data) => {
                   return (
                     <tr key={data._id} className="border-b">
                       <td className="p-4 flex justify-center text-gray-600"> <Avatar className="h-12 w-12">

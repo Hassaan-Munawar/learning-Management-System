@@ -6,7 +6,7 @@ export async function getBatches() {
   let batches = await fetch(`${process.env.BASE_URL}/api/batches`);
   batches = await batches.json();
   return batches;
-}
+} 
 
 export async function addBatch(formData) {
   const obj = {

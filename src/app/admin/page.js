@@ -1,22 +1,19 @@
-import { ApplicationModal } from "@/lib/modals/ApplicationModal";
-import { BatchModal } from "@/lib/modals/BatchModal";
-import { CourseModal } from "@/lib/modals/CourseModal";
-import { UserModal } from "@/lib/modals/UserModal";
+
 import { getAdmissions } from "@/actions/admissions";
 import { getBatches } from "@/actions/batches";
 import { getCourses } from "@/actions/courses";
+import { getUsers } from "@/actions/users";
+import { getApplicationsLength } from "@/actions/application";
 
 
 
 export default async function Dashboard() {
 
-  const students = await UserModal.countDocuments()
-  const course = await CourseModal.countDocuments()
-  const batche = await BatchModal.countDocuments()
-  const applications = await ApplicationModal.countDocuments()
   const { admissions } = await getAdmissions();
   const {batches} = await getBatches()
   const {courses} = await getCourses()
+  const {users} = await getUsers()
+  const {applications} = await getApplicationsLength()
 
 
 
@@ -34,19 +31,19 @@ export default async function Dashboard() {
       <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-6">
         <div className="p-4 bg-white rounded-md shadow-md">
           <h2 className="text-sm text-gray-500">Total Students</h2>
-          <p className="text-xl font-bold text-gray-700">{students}</p>
+          <p className="text-xl font-bold text-gray-700">{users.length}</p>
         </div>
         <div className="p-4 bg-white rounded-md shadow-md">
           <h2 className="text-sm text-gray-500">Total Courses</h2>
-          <p className="text-xl font-bold text-gray-700">{course}</p>
+          <p className="text-xl font-bold text-gray-700">{courses.length}</p>
         </div>
         <div className="p-4 bg-white rounded-md shadow-md">
           <h2 className="text-sm text-gray-500">Total Batches</h2>
-          <p className="text-xl font-bold text-gray-700">{batche}</p>
+          <p className="text-xl font-bold text-gray-700">{batches.length}</p>
         </div>
         <div className="p-4 bg-white rounded-md shadow-md">
           <h2 className="text-sm text-gray-500">Total Applications</h2>
-          <p className="text-xl font-bold text-gray-700">{applications}</p>
+          <p className="text-xl font-bold text-gray-700">{applications.length}</p>
         </div>
       </section>
 
