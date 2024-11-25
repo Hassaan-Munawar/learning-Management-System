@@ -119,9 +119,7 @@ export const columns = [
 
       return (
         <div className="flex gap-5">
-          <Link href={`/admin/admissions/${admission._id}`}>
-            <EyeIcon className="bg-secondary text-primary" />
-          </Link>
+          
           <Select
             defaultValue={row.getValue("status")}
             onValueChange={async (value) => {
@@ -137,6 +135,9 @@ export const columns = [
               <SelectItem value="close">close</SelectItem>
             </SelectContent>
           </Select>
+          <Link href={`/admin/admissions/${admission._id}`}>
+            <EyeIcon className="bg-secondary text-primary" />
+          </Link>
         </div>
       );
     },

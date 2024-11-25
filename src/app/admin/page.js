@@ -1,6 +1,24 @@
+import { ApplicationModal } from "@/lib/modals/ApplicationModal";
+import { BatchModal } from "@/lib/modals/BatchModal";
+import { CourseModal } from "@/lib/modals/CourseModal";
+import { UserModal } from "@/lib/modals/UserModal";
+import { getAdmissions } from "@/actions/admissions";
+import { getBatches } from "@/actions/batches";
+import { getCourses } from "@/actions/courses";
 
 
-export default function Dashboard() {
+
+export default async function Dashboard() {
+
+  const students = await UserModal.countDocuments()
+  const course = await CourseModal.countDocuments()
+  const batche = await BatchModal.countDocuments()
+  const applications = await ApplicationModal.countDocuments()
+  const { admissions } = await getAdmissions();
+  const {batches} = await getBatches()
+  const {courses} = await getCourses()
+
+
 
   return (
     <>
@@ -15,59 +33,129 @@ export default function Dashboard() {
       {/* Stats Section */}
       <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-6">
         <div className="p-4 bg-white rounded-md shadow-md">
-          <h2 className="text-sm text-gray-500">Total Users</h2>
-          <p className="text-xl font-bold text-gray-700">1,245</p>
+          <h2 className="text-sm text-gray-500">Total Students</h2>
+          <p className="text-xl font-bold text-gray-700">{students}</p>
         </div>
         <div className="p-4 bg-white rounded-md shadow-md">
-          <h2 className="text-sm text-gray-500">Active Sessions</h2>
-          <p className="text-xl font-bold text-gray-700">78</p>
+          <h2 className="text-sm text-gray-500">Total Courses</h2>
+          <p className="text-xl font-bold text-gray-700">{course}</p>
         </div>
         <div className="p-4 bg-white rounded-md shadow-md">
-          <h2 className="text-sm text-gray-500">Pending Orders</h2>
-          <p className="text-xl font-bold text-gray-700">32</p>
+          <h2 className="text-sm text-gray-500">Total Batches</h2>
+          <p className="text-xl font-bold text-gray-700">{batche}</p>
         </div>
         <div className="p-4 bg-white rounded-md shadow-md">
-          <h2 className="text-sm text-gray-500">Revenue</h2>
-          <p className="text-xl font-bold text-gray-700">$14,250</p>
+          <h2 className="text-sm text-gray-500">Total Applications</h2>
+          <p className="text-xl font-bold text-gray-700">{applications}</p>
         </div>
       </section>
 
-      {/* Data Table */}
       <section className="bg-white rounded-md shadow-md mt-6">
         <div className="p-4 border-b border-gray-200">
-          <h2 className="text-lg font-semibold text-gray-700">
-            Recent Activity
+          <h2 className="text-xl font-bold text-gray-700">
+            Courses
           </h2>
         </div>
         <div className="overflow-x-auto">
-          <table className="w-full table-auto text-left">
+          <table className="w-full table-auto text-center">
             <thead className="bg-gray-100">
               <tr>
-                <th className="p-4 text-sm font-medium text-gray-500">User</th>
-                <th className="p-4 text-sm font-medium text-gray-500">Action</th>
-                <th className="p-4 text-sm font-medium text-gray-500">Date</th>
+                <th className="p-4 text-sm font-medium text-gray-500">Course Name</th>
+                <th className="p-4 text-sm font-medium text-gray-500">Eligibility</th>
+                <th className="p-4 text-sm font-medium text-gray-500">Description</th>
+                <th className="p-4 text-sm font-medium text-gray-500">Duration</th>
               </tr>
             </thead>
             <tbody>
-              <tr className="border-b">
-                <td className="p-4 text-gray-600">John Doe</td>
-                <td className="p-4 text-gray-600">Logged In</td>
-                <td className="p-4 text-gray-600">2024-11-20</td>
-              </tr>
-              <tr className="border-b">
-                <td className="p-4 text-gray-600">Jane Smith</td>
-                <td className="p-4 text-gray-600">Updated Profile</td>
-                <td className="p-4 text-gray-600">2024-11-19</td>
-              </tr>
-              <tr>
-                <td className="p-4 text-gray-600">Alex Brown</td>
-                <td className="p-4 text-gray-600">Added a Post</td>
-                <td className="p-4 text-gray-600">2024-11-18</td>
-              </tr>
+              {
+                courses.map((data) => {
+                  return (
+                    <tr className="border-b">
+                      <td className="p-4 text-gray-600">{data.title}</td>
+                      <td className="p-4 text-gray-600">{data.eligibility}</td>
+                      <td className="p-4 text-gray-600">{data.description}</td>
+                      <td className="p-4 text-gray-600">{data.duration}</td>
+                    </tr>
+
+                  )
+                })
+              }
             </tbody>
           </table>
         </div>
       </section>
+
+     
+      <section className="bg-white rounded-md shadow-md mt-6">
+        <div className="p-4 border-b border-gray-200">
+          <h2 className="text-xl font-bold text-gray-700">
+            Batches
+          </h2>
+        </div>
+        <div className="overflow-x-auto">
+          <table className="w-full table-auto text-center">
+            <thead className="bg-gray-100">
+              <tr>
+                <th className="p-4 text-sm font-medium text-gray-500">Batch Name</th>
+                <th className="p-4 text-sm font-medium text-gray-500">Course Name</th>
+                <th className="p-4 text-sm font-medium text-gray-500">Description</th>
+                <th className="p-4 text-sm font-medium text-gray-500">Created At</th>
+              </tr>
+            </thead>
+            <tbody>
+              {
+                batches.map((data) => {
+                  return (
+                    <tr className="border-b">
+                      <td className="p-4 text-gray-600">{data.title}</td>
+                      <td className="p-4 text-gray-600">{data.course.title}</td>
+                      <td className="p-4 text-gray-600">{data.description}</td>
+                      <td className="p-4 text-gray-600">{data.createdAt}</td>
+                    </tr>
+
+                  )
+                })
+              }
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section className="bg-white rounded-md shadow-md mt-6">
+        <div className="p-4 border-b border-gray-200">
+          <h2 className="text-xl font-bold text-gray-700">
+            Admissions
+          </h2>
+        </div>
+        <div className="overflow-x-auto">
+          <table className="w-full table-auto text-center">
+            <thead className="bg-gray-100">
+              <tr>
+                <th className="p-4 text-sm font-medium text-gray-500">Course Name</th>
+                <th className="p-4 text-sm font-medium text-gray-500">Batch Name</th>
+                <th className="p-4 text-sm font-medium text-gray-500">Status</th>
+                <th className="p-4 text-sm font-medium text-gray-500">Created At</th>
+              </tr>
+            </thead>
+            <tbody>
+              {
+                admissions.map((data) => {
+                  return (
+                    <tr className="border-b">
+                      <td className="p-4 text-gray-600">{data.course.title}</td>
+                      <td className="p-4 text-gray-600">{data.batch.title}</td>
+                      <td className="p-4 text-gray-600">{data.status}</td>
+                      <td className="p-4 text-gray-600">{data.createdAt}</td>
+                    </tr>
+
+                  )
+                })
+              }
+            </tbody>
+          </table>
+        </div>
+      </section>
+ 
     </>
   );
 }
