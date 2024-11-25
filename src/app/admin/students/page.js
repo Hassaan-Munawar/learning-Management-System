@@ -22,7 +22,7 @@ export default async function Students(){
               {
                 allStudents.map((data) => {
                   return (
-                    <tr className="border-b">
+                    <tr key={data._id} className="border-b">
                       <td className="p-4 flex justify-center text-gray-600"> <Avatar className="h-12 w-12">
                         <AvatarImage
                           src={data.image}

@@ -70,7 +70,7 @@ export default async function Dashboard() {
               {
                 courses.map((data) => {
                   return (
-                    <tr className="border-b">
+                    <tr key={data._id} className="border-b">
                       <td className="p-4 text-gray-600">{data.title}</td>
                       <td className="p-4 text-gray-600">{data.eligibility}</td>
                       <td className="p-4 text-gray-600">{data.description}</td>
@@ -106,7 +106,7 @@ export default async function Dashboard() {
               {
                 batches.map((data) => {
                   return (
-                    <tr className="border-b">
+                    <tr key={data._id} className="border-b">
                       <td className="p-4 text-gray-600">{data.title}</td>
                       <td className="p-4 text-gray-600">{data.course.title}</td>
                       <td className="p-4 text-gray-600">{data.description}</td>
@@ -141,7 +141,7 @@ export default async function Dashboard() {
               {
                 admissions.map((data) => {
                   return (
-                    <tr className="border-b">
+                    <tr key={data._id} className="border-b">
                       <td className="p-4 text-gray-600">{data.course.title}</td>
                       <td className="p-4 text-gray-600">{data.batch.title}</td>
                       <td className="p-4 text-gray-600">{data.status}</td>
