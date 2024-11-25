@@ -2,7 +2,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 // import { getUsers } from "@/actions/users";
 
 export default async function Students(){
-    const {users} = await getUsers()
+    // const {users} = await getUsers()
 
     return(
       //   <section className="bg-white rounded-md shadow-md mt-6">
