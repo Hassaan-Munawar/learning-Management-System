@@ -114,6 +114,22 @@ function BatchForm({ className, courses }) {
         </Select>
       </div>
 
+      <div className="grid gap-2">
+        <Label htmlFor="trainer">Trainer</Label>
+        <Select required name="trainer">
+          <SelectTrigger>
+            <SelectValue placeholder="Select Trainer" />
+          </SelectTrigger>
+          <SelectContent>
+            {courses.map((course) => (
+              <SelectItem key={course._id} value={course._id}>
+                {course.title}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
+      </div>
+
       <Button type="submit">Add Batch</Button>
     </form>
   );

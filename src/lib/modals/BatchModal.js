@@ -7,6 +7,7 @@ const batchSchema = new Schema(
     title: { type: String },
     description: String,
     course: { type: mongoose.Types.ObjectId, ref: "Course" },
+    trainer: { type: String },
     status: {
       type: String,
       default: "pending",

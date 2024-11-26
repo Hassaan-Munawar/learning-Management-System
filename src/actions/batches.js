@@ -13,6 +13,7 @@ export async function addBatch(formData) {
     title: formData.get("title"),
     description: formData.get("description"),
     course: formData.get("course"),
+    trainer:formData.get("trainer")
   };
 
   const batch = await fetch(`${process.env.BASE_URL}/api/batches`, {
