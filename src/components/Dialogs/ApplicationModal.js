@@ -109,14 +109,9 @@ function ApplicationForm({ admission, session, setOpen }) {
       },
     };
     const response = await addApplication(obj);
-    if (response.error) {
-      toast.error("Sorry, You have already applied in this course");
-    } else {
+    if (response.ok) {
       toast.success("Your application is submitted successfully");
-    }
-
-
-
+    } 
     setOpen(false);
   }
   return (

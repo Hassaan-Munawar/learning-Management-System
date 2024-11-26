@@ -25,7 +25,6 @@ export function CourseSection({ admissions, applications }) {
     );
   }
 
-  // Function to check if the user has already applied for a course
   const hasApplied = (admissionId) => {
     return applications.some(
       (application) =>
@@ -33,6 +32,8 @@ export function CourseSection({ admissions, applications }) {
         application.user._id === session?.user?.id
     );
   };
+
+  const isAdmin = session?.user?.name === "Admin";
 
   return (
     <section className="bg-blue-600 min-h-screen flex flex-col items-center justify-center text-white">
@@ -101,13 +102,13 @@ export function CourseSection({ admissions, applications }) {
                 <Button variant="secondary" className="w-full" disabled>
                   Loading...
                 </Button>
+              ) : isAdmin ? (
+                <Button variant="secondary" className="w-full" disabled>
+                  Admin 
+                </Button>
               ) : session?.user ? (
                 hasApplied(admission._id) ? (
-                  <Button
-                    variant="secondary"
-                    className="w-full"
-                    disabled
-                  >
+                  <Button variant="secondary" className="w-full" disabled>
                     Applied
                   </Button>
                 ) : (

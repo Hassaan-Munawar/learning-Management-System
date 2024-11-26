@@ -10,19 +10,18 @@ export default async function Home() {
   const { admissions } = await getAdmissions("open");
 
   let userApplications = [];
-  
-  if (session?.user && session?.user?.name != "Admin") {
+  if (session?.user && session.user.name !== "Admin") {
     const { userApplications: fetchedApplications } = await getSingleApplication(session?.user?.id);
     userApplications = fetchedApplications || [];
-  }
-  else if(session?.user?.name == "Admin"){
-    userApplications = []
   }
 
   return (
     <div>
       <HeroSection />
-      <CourseSection admissions={admissions} applications={userApplications} />
+      <CourseSection
+        admissions={admissions}
+        applications={userApplications}
+      />
     </div>
   );
 }

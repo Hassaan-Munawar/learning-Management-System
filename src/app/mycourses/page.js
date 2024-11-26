@@ -2,9 +2,13 @@ import { getApplications } from "@/actions/application";
 import { getServerSession } from "next-auth/next";
 import ApplicationCard from "@/components/ApplicationCard/ApplicationCard";
 import { authOptions } from "../api/auth/[...nextauth]/route";
+import { redirect } from "next/navigation";
 
 export default async function MyCourses() {
     const session = await getServerSession(authOptions)
+    if(session?.user?.name == "Admin"){
+        redirect('/')
+    }
     const { applications } = await getApplications({ user: session?.user?.id });
 
     return (

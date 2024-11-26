@@ -88,11 +88,11 @@ function BatchForm({ className,trainers, courses }) {
         />
       </div>
       <div className="grid gap-2">
-        <Label htmlFor="batchName">Description</Label>
+        <Label htmlFor="description">Description</Label>
         <Input
           required
           type="text"
-          id="batchName"
+          id="description"
           name="description"
           defaultValue=""
         />

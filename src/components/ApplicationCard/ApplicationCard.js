@@ -29,7 +29,7 @@ export default function ApplicationCard({ application }) {
                 src={application.user.image}
                 alt={application.user.name}
               />
-              <AvatarFallback>
+              <AvatarFallback className="bg-blue-400">
                 {application.user.name.charAt(0)}
               </AvatarFallback>
             </Avatar>

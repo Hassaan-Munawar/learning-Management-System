@@ -120,11 +120,11 @@ function BatchForm({ className, courses, batches }) {
 
       <div className="grid gap-2">
         <Label htmlFor="course">Start Date</Label>
-        <Input type="date" name="startDate" />
+        <Input required type="date" name="startDate" />
       </div>
       <div className="grid gap-2">
         <Label htmlFor="course">End Date</Label>
-        <Input type="date" name="endDate" />
+        <Input required type="date" name="endDate" />
       </div>
 
       <Button type="submit">New Admissions</Button>

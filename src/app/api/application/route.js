@@ -7,17 +7,6 @@ import { UserModal } from "@/lib/modals/UserModal";
 export async function POST(request) {
   await connectDB();
   const obj = await request.json();
-  const application = await ApplicationModal.findOne({
-    admission: obj.admission,
-    user: obj.user,
-  });
-
-  if (application) {
-    return Response.json({
-      error: true,
-      msg: "You have already applied to this course.",
-    });
-  }
   let newApplication = new ApplicationModal({ ...obj });
   newApplication = await newApplication.save();
 
