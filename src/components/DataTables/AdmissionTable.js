@@ -135,9 +135,9 @@ export const columns = [
               <SelectItem value="close">close</SelectItem>
             </SelectContent>
           </Select>
-          <Link href={`/admin/admissions/${admission._id}`}>
+          {/* <Link href={`/admin/admissions/${admission._id}`}>
             <EyeIcon className="bg-secondary text-primary" />
-          </Link>
+          </Link> */}
         </div>
       );
     },
