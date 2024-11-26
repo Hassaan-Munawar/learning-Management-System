@@ -34,6 +34,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { addApplication } from "@/actions/application";
 import { useSession } from "next-auth/react";
 import {toast } from 'react-toastify';
+import { useMediaQuery } from "@/hooks/use-media-query"
 
 
 const formSchema = z.object({
@@ -44,7 +45,7 @@ const formSchema = z.object({
 
 export function ApplicationModalForm({ admission}) {
   const [open, setOpen] = React.useState(false);
-  const isDesktop = true;
+  const isDesktop = useMediaQuery("(min-width: 768px)");
   const { data: session } = useSession(); 
 
 
@@ -73,13 +74,15 @@ export function ApplicationModalForm({ admission}) {
   return (
     <Drawer open={open} onOpenChange={setOpen}>
       <DrawerTrigger asChild>
-        <Button variant="outline">Add Batch</Button>
+      <div className="text-black">
+        <Button variant="outline">Apply</Button>
+        </div>
       </DrawerTrigger>
       <DrawerContent>
         <DrawerHeader className="text-left">
-          <DrawerTitle>Add Batch</DrawerTitle>
+          <DrawerTitle>Apply</DrawerTitle>
         </DrawerHeader>
-        <ApplicationForm admission={admission} session={session} setOpen={setOpen} className="px-4" />
+        <ApplicationForm admission={admission} session={session} setOpen={setOpen}  />
         <DrawerFooter className="pt-2">
           <DrawerClose asChild>
             <Button variant="outline">Cancel</Button>
@@ -118,7 +121,7 @@ function ApplicationForm({ admission, session, setOpen }) {
   }
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 mx-4 md:mx-0">
         <FormField
           control={form.control}
           name="CNIC"

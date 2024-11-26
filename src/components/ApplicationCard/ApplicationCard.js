@@ -65,7 +65,7 @@ export default function ApplicationCard({ application }) {
             <h4 className="font-semibold text-lg">Course Details</h4>
             <p className="text-sm">Course: {application.course.title}</p>
             <p className="text-sm">Batch: {application.batch.title}</p>
-            {/* <p className="text-sm">Trainer: {application.batch.trainer}</p> */}
+            <p className="text-sm">Trainer: {application.batch.trainer}</p>
           </div>
           {/* Admission Details */}
           <div className="grid gap-2 bg-blue-700 p-4 rounded-lg">

@@ -14,7 +14,6 @@ import {
   Drawer,
   DrawerClose,
   DrawerContent,
-  DrawerDescription,
   DrawerFooter,
   DrawerHeader,
   DrawerTitle,
@@ -23,11 +22,12 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { addTrainer } from "@/actions/trainers";
+import { useMediaQuery } from "@/hooks/use-media-query";
 
 
 export function TrainerDialog() {
   const [open, setOpen] = React.useState(false);
-  const isDesktop = true;
+  const isDesktop = useMediaQuery("(min-width: 768px)");
 
   if (isDesktop) {
     return (
@@ -38,9 +38,7 @@ export function TrainerDialog() {
         <DialogContent className="sm:max-w-[425px]">
           <DialogHeader>
             <DialogTitle>Add Trainer</DialogTitle>
-            {/* <DialogDescription>
-
-            </DialogDescription> */}
+          
           </DialogHeader>
           <TrainerForm />
         </DialogContent>
@@ -56,9 +54,8 @@ export function TrainerDialog() {
       <DrawerContent>
         <DrawerHeader className="text-left">
           <DrawerTitle>Add Trainer</DrawerTitle>
-          <DrawerDescription>You can add Trainer here.</DrawerDescription>
         </DrawerHeader>
-        <TrainerForm className="px-4" />
+        <TrainerForm />
         <DrawerFooter className="pt-2">
           <DrawerClose asChild>
             <Button variant="outline">Cancel</Button>
@@ -73,7 +70,7 @@ function TrainerForm({ className }) {
   return (
     <form
       action={addTrainer}
-      className={cn("grid items-start gap-4", className)}
+      className={cn("grid items-start gap-4 mx-4 md:mx-0", className)}
     >
       <div className="grid gap-2">
         <Label htmlFor="name">Name</Label>

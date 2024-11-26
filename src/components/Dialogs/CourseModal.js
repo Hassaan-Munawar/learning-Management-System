@@ -14,7 +14,6 @@ import {
   Drawer,
   DrawerClose,
   DrawerContent,
-  DrawerDescription,
   DrawerFooter,
   DrawerHeader,
   DrawerTitle,
@@ -24,10 +23,11 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
 import { addCourse } from "@/actions/courses";
+import { useMediaQuery } from "@/hooks/use-media-query";
 
 export function CourseDialog() {
   const [open, setOpen] = React.useState(false);
-  const isDesktop = true;
+  const isDesktop = useMediaQuery("(min-width: 768px)");
 
   if (isDesktop) {
     return (
@@ -38,9 +38,6 @@ export function CourseDialog() {
         <DialogContent className="sm:max-w-[425px]">
           <DialogHeader>
             <DialogTitle>Add Course</DialogTitle>
-            {/* <DialogDescription>
-
-            </DialogDescription> */}
           </DialogHeader>
           <CourseForm />
         </DialogContent>
@@ -56,9 +53,8 @@ export function CourseDialog() {
       <DrawerContent>
         <DrawerHeader className="text-left">
           <DrawerTitle>Add Course</DrawerTitle>
-          <DrawerDescription>You can add course here.</DrawerDescription>
         </DrawerHeader>
-        <CourseForm className="px-4" />
+        <CourseForm />
         <DrawerFooter className="pt-2">
           <DrawerClose asChild>
             <Button variant="outline">Cancel</Button>
@@ -73,7 +69,7 @@ function CourseForm({ className }) {
   return (
     <form
       action={addCourse}
-      className={cn("grid items-start gap-4", className)}
+      className={cn("grid items-start gap-4 mx-4 md:mx-0", className)}
     >
       <div className="grid gap-2">
         <Label htmlFor="course">Course Title</Label>

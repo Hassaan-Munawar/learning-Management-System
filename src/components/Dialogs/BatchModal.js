@@ -29,12 +29,13 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { addBatch } from "@/actions/batches";
+import { useMediaQuery } from "@/hooks/use-media-query";
 
 
 
 export function BatchModal({ trainers , courses }) {
   const [open, setOpen] = React.useState(false);
-  const isDesktop = true;
+  const isDesktop = useMediaQuery("(min-width: 768px)");
 
   if (isDesktop) {
     return (
@@ -61,7 +62,7 @@ export function BatchModal({ trainers , courses }) {
         <DrawerHeader className="text-left">
           <DrawerTitle>Add Batch</DrawerTitle>
         </DrawerHeader>
-        <BatchForm trainers={trainers} courses={courses} className="px-4" />
+        <BatchForm trainers={trainers} courses={courses} />
         <DrawerFooter className="pt-2">
           <DrawerClose asChild>
             <Button variant="outline">Cancel</Button>
@@ -74,7 +75,7 @@ export function BatchModal({ trainers , courses }) {
 
 function BatchForm({ className,trainers, courses }) {
   return (
-    <form action={addBatch} className={cn("grid items-start gap-4", className)}>
+    <form action={addBatch} className={cn("grid items-start gap-4 mx-4 md:mx-0", className)}>
       {/* Batch Name */}
       <div className="grid gap-2">
         <Label htmlFor="batchName">Batch Name</Label>
@@ -122,7 +123,7 @@ function BatchForm({ className,trainers, courses }) {
           </SelectTrigger>
           <SelectContent>
             {trainers.map((trainer) => (
-              <SelectItem key={trainer._id} value={trainer._id}>
+              <SelectItem key={trainer._id} value={trainer.name}>
                 {trainer.name}
               </SelectItem>
             ))}

@@ -29,11 +29,12 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { addAdmission } from "@/actions/admissions";
+import { useMediaQuery } from "@/hooks/use-media-query";
 
 
 export function NewAdmissionModal({ courses, batches }) {
   const [open, setOpen] = React.useState(false);
-  const isDesktop = true;
+  const isDesktop = useMediaQuery("(min-width: 768px)");;
 
   if (isDesktop) {
     return (
@@ -54,13 +55,13 @@ export function NewAdmissionModal({ courses, batches }) {
   return (
     <Drawer open={open} onOpenChange={setOpen}>
       <DrawerTrigger asChild>
-        <Button variant="outline">Add Batch</Button>
+        <Button variant="outline">Add Admission</Button>
       </DrawerTrigger>
       <DrawerContent>
         <DrawerHeader className="text-left">
-          <DrawerTitle>Add Batch</DrawerTitle>
+          <DrawerTitle>Add Admission</DrawerTitle>
         </DrawerHeader>
-        <BatchForm className="px-4" />
+        <BatchForm courses={courses} batches={batches} />
         <DrawerFooter className="pt-2">
           <DrawerClose asChild>
             <Button variant="outline">Cancel</Button>
@@ -74,7 +75,7 @@ export function NewAdmissionModal({ courses, batches }) {
 function BatchForm({ className, courses, batches }) {
   const [chosenCourse, setChosenCourse] = React.useState("");
   return (
-    <form action={addAdmission} className={cn("grid items-start gap-4", className)}>
+    <form action={addAdmission} className={cn("grid items-start gap-4 mx-4 md:mx-0", className)}>
       {/* Batch Name */}
       {/* Course */}
       <div className="grid gap-2">
