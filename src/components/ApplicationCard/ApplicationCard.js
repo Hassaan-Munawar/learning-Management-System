@@ -6,7 +6,7 @@ import {
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { CalendarIcon, InfoIcon, MapPinIcon, UserIcon } from "lucide-react";
+import { CalendarIcon, MapPinIcon, UserIcon } from "lucide-react";
 
 export default function ApplicationCard({ application }) {
   return (
@@ -14,7 +14,7 @@ export default function ApplicationCard({ application }) {
       <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
         <CardTitle className="text-2xl font-bold">Application Details</CardTitle>
         <Badge
-          variant={application.status === "pending" ? "secondary" : "default"}
+          variant={"secondary" }
           className="text-sm bg-white text-blue-700 px-3 py-1 rounded-full"
         >
           {application.status.toUpperCase()}

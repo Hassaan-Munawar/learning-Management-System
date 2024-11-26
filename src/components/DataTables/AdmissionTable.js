@@ -90,7 +90,7 @@ export const columns = [
   },
   {
     accessorKey: "status",
-    header: "Status",
+    header: "Current Status",
     cell: ({ row }) => (
       <div className="capitalize">{row.getValue("status")}</div>
     ),
@@ -113,6 +113,7 @@ export const columns = [
   {
     accessorKey: "status",
     id: "actions",
+    header: "Change Status",
     enableHiding: false,
     cell: ({ row }) => {
       const admission = row.original;
@@ -135,9 +136,6 @@ export const columns = [
               <SelectItem value="close">close</SelectItem>
             </SelectContent>
           </Select>
-          {/* <Link href={`/admin/admissions/${admission._id}`}>
-            <EyeIcon className="bg-secondary text-primary" />
-          </Link> */}
         </div>
       );
     },

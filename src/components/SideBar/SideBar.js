@@ -42,6 +42,13 @@ export default function Sidebar() {
           <span className="hidden lg:inline">Admissions</span>
         </Link>
         <Link
+          href="/admin/applications"
+          className="hover:bg-blue-700 p-2 rounded-md flex items-center justify-center lg:justify-start space-x-2"
+        >
+           <FiClipboard className="h-6 w-6" />
+          <span className="hidden lg:inline">Applications</span>
+        </Link>
+        <Link
           href="/admin/trainers"
           className="hover:bg-blue-700 p-2 rounded-md flex items-center justify-center lg:justify-start space-x-2"
         >
