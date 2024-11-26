@@ -53,6 +53,6 @@ export async function getApplicationsLength() {
 
 export async function getSingleApplication(id) {
   let userApplications = await fetch(`${process.env.BASE_URL}/api/application/${id}`,{cache:"no-cache"});
-  userApplications  = await  userApplications .json();
+  userApplications  = await userApplications.json();
   return  userApplications ;
 }
