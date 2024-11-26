@@ -16,14 +16,26 @@ import { ApplicationModalForm } from "../Dialogs/ApplicationModal";
 
 export function CourseSection({ admissions, applications }) {
   const { data: session, status } = useSession();
+
   if (status === "loading") {
-    return <div class="flex items-center justify-center h-20 bg-blue-600">
-      <div class="loader border-t-4 border-b-4 border-white rounded-full w-14 h-14 animate-spin"></div>
-    </div>;
+    return (
+      <div className="flex items-center justify-center h-20 bg-blue-600">
+        <div className="loader border-t-4 border-b-4 border-white rounded-full w-14 h-14 animate-spin"></div>
+      </div>
+    );
   }
 
+  // Function to check if the user has already applied for a course
+  const hasApplied = (admissionId) => {
+    return applications.some(
+      (application) =>
+        application.admission._id === admissionId &&
+        application.user._id === session?.user?.id
+    );
+  };
+
   return (
-    <section className="bg-blue-600  min-h-screen flex flex-col items-center justify-center text-white">
+    <section className="bg-blue-600 min-h-screen flex flex-col items-center justify-center text-white">
       {/* Header Section */}
       <div className="px-4 py-8 md:py-4 text-center mb-10">
         <h1 className="text-3xl md:text-4xl font-bold">
@@ -50,19 +62,23 @@ export function CourseSection({ admissions, applications }) {
                   <CardDescription className="text-gray-100">
                     {admission.batch.title}
                   </CardDescription>
-                  <CardDescription className="text-gray-100">Trainer: {admission.batch.trainer}
+                  <CardDescription className="text-gray-100">
+                    Trainer: {admission.batch.trainer}
                   </CardDescription>
                 </div>
                 <span
-                  className={"text-sm font-medium px-4 py-1 rounded-full bg-white text-green-600"}
+                  className={
+                    "text-sm font-medium px-4 py-1 rounded-full bg-white text-green-600"
+                  }
                 >
                   {admission.status}
                 </span>
-
               </div>
             </CardHeader>
             <CardContent className="flex-grow">
-              <p className="text-gray-100 mb-4">{admission.course.description}</p>
+              <p className="text-gray-100 mb-4">
+                {admission.course.description}
+              </p>
               <div className="flex flex-col space-y-2 text-sm">
                 <div className="flex items-center text-gray-200">
                   <Calendar className="w-4 h-4 mr-2" />
@@ -86,7 +102,17 @@ export function CourseSection({ admissions, applications }) {
                   Loading...
                 </Button>
               ) : session?.user ? (
-                <ApplicationModalForm admission={admission} />
+                hasApplied(admission._id) ? (
+                  <Button
+                    variant="secondary"
+                    className="w-full"
+                    disabled
+                  >
+                    Applied
+                  </Button>
+                ) : (
+                  <ApplicationModalForm admission={admission} />
+                )
               ) : (
                 <Button
                   variant="outline"
@@ -112,6 +138,7 @@ export function CourseSection({ admissions, applications }) {
 }
 
 export default CourseSection;
+
 
 
 
