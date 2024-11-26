@@ -85,10 +85,10 @@ export const columns = [
     cell: ({ row }) => <div>{row.getValue("course")?.title}</div>,
   },
   {
-    accessorKey: "status",
-    header: "Status",
+    accessorKey: "trainer",
+    header: "Trainer",
     cell: ({ row }) => (
-      <div className="capitalize">{row.getValue("status")}</div>
+      <div className="capitalize">{row.getValue("trainer")}</div>
     ),
   },
 

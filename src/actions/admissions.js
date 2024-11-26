@@ -14,7 +14,7 @@ export async function getAdmissions(status="") {
 }
 
 export async function getSingleAdmission(id) {
-  let admission = await fetch(`${process.env.BASE_URL}/api/admission/${id}`);
+  let admission = await fetch(`${process.env.BASE_URL}/api/admission/${id}`,{cache:"no-cache"});
   admission = await admission.json();
   return admission;
 }

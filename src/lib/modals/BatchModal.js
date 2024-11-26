@@ -8,17 +8,6 @@ const batchSchema = new Schema(
     description: String,
     course: { type: mongoose.Types.ObjectId, ref: "Course" },
     trainer: { type: String },
-    status: {
-      type: String,
-      default: "pending",
-      enum: [
-        "pending",
-        "admission-open",
-        "admission-close",
-        "ongoing",
-        "completed",
-      ],
-    },
   },
   { timestamps: true }
 );

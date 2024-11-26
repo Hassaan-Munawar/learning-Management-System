@@ -3,7 +3,7 @@
 import { revalidatePath } from "next/cache";
 
 export async function getBatches() {
-  let batches = await fetch(`${process.env.BASE_URL}/api/batches`);
+  let batches = await fetch(`${process.env.BASE_URL}/api/batches`,{cache:"no-cache"});
   batches = await batches.json();
   return batches;
 } 

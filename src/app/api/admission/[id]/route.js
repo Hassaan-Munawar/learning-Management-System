@@ -11,7 +11,7 @@ export async function GET(req,{ params }) {
   await connectDB();
   const admissions = await AdmissionModal.findOne({ _id: id })
     .populate("course", "title description")
-    .populate("batch", "title")
+    .populate("batch", "title trainer")
     .lean();
 
   const applications = await ApplicationModal.find({

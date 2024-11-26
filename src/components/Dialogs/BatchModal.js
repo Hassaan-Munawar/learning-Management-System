@@ -32,7 +32,7 @@ import { addBatch } from "@/actions/batches";
 
 
 
-export function BatchModal({ courses }) {
+export function BatchModal({ trainers , courses }) {
   const [open, setOpen] = React.useState(false);
   const isDesktop = true;
 
@@ -46,7 +46,7 @@ export function BatchModal({ courses }) {
           <DialogHeader>
             <DialogTitle>Add Batch</DialogTitle>
           </DialogHeader>
-          <BatchForm courses={courses} />
+          <BatchForm trainers={trainers} courses={courses} />
         </DialogContent>
       </Dialog>
     );
@@ -61,7 +61,7 @@ export function BatchModal({ courses }) {
         <DrawerHeader className="text-left">
           <DrawerTitle>Add Batch</DrawerTitle>
         </DrawerHeader>
-        <BatchForm className="px-4" />
+        <BatchForm trainers={trainers} courses={courses} className="px-4" />
         <DrawerFooter className="pt-2">
           <DrawerClose asChild>
             <Button variant="outline">Cancel</Button>
@@ -72,7 +72,7 @@ export function BatchModal({ courses }) {
   );
 }
 
-function BatchForm({ className, courses }) {
+function BatchForm({ className,trainers, courses }) {
   return (
     <form action={addBatch} className={cn("grid items-start gap-4", className)}>
       {/* Batch Name */}
@@ -121,9 +121,9 @@ function BatchForm({ className, courses }) {
             <SelectValue placeholder="Select Trainer" />
           </SelectTrigger>
           <SelectContent>
-            {courses.map((course) => (
-              <SelectItem key={course._id} value={course._id}>
-                {course.title}
+            {trainers.map((trainer) => (
+              <SelectItem key={trainer._id} value={trainer._id}>
+                {trainer.name}
               </SelectItem>
             ))}
           </SelectContent>
