@@ -14,13 +14,12 @@ import { Calendar } from "lucide-react";
 import { useSession } from "next-auth/react";
 import { ApplicationModalForm } from "../Dialogs/ApplicationModal";
 
-export function CourseSection({ admissions }) {
+export function CourseSection({ admissions, applications }) {
   const { data: session, status } = useSession();
-
   if (status === "loading") {
     return <div class="flex items-center justify-center h-20 bg-blue-600">
-    <div class="loader border-t-4 border-b-4 border-white rounded-full w-14 h-14 animate-spin"></div>
-</div>;
+      <div class="loader border-t-4 border-b-4 border-white rounded-full w-14 h-14 animate-spin"></div>
+    </div>;
   }
 
   return (
