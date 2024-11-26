@@ -109,9 +109,14 @@ function ApplicationForm({ admission, session, setOpen }) {
       },
     };
     const response = await addApplication(obj);
-    if (response.ok) {
-      toast.success("Your application is submitted successfully");
+    if (response.error) {
+      toast.error("An error occured..")
     } 
+    else{
+      toast.success("Your application is submitted successfully");
+      
+    }
+    setTimeout(()=>{window.location.reload()},4000)
     setOpen(false);
   }
   return (
