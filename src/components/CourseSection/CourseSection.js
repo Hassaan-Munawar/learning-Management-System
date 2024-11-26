@@ -51,8 +51,7 @@ export function CourseSection({ admissions }) {
                   <CardDescription className="text-gray-100">
                     {admission.batch.title}
                   </CardDescription>
-                  {/* <CardDescription className="text-gray-100">
-                    {admission.batch.trainer}
+                  {/* <CardDescription className="text-gray-100">Trainer: {admission.batch.trainer}
                   </CardDescription> */}
                 </div>
                 <span

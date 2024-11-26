@@ -54,7 +54,7 @@ export async function GET(req) {
 
   const admissions = await AdmissionModal.find(query)
     .populate("course", "title description")
-    .populate("batch", "title");
+    .populate("batch", "title trainer");
   return Response.json({
     error: false,
     msg: "Admission Fetched Successfully",

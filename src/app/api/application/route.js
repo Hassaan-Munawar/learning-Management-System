@@ -49,12 +49,12 @@ export async function GET(req) {
     let applications;
     query ? applications = await ApplicationModal.find(query)
       .populate("course", "title")
-      .populate("batch", "title")
+      .populate("batch", "title trainer")
       .populate("admission", "startDate endDate status")
       .populate("user", "name email image")
       : applications = await ApplicationModal.find()
         .populate("course", "title")
-        .populate("batch", "title")
+        .populate("batch", "title trainer")
         .populate("admission", "startDate endDate status")
         .populate("user", "name email image");
     return Response.json({
