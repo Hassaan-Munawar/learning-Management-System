@@ -10,7 +10,7 @@ import {
   getSortedRowModel,
   useReactTable,
 } from "@tanstack/react-table";
-import { ArrowUpDown, ChevronDown, EyeIcon } from "lucide-react";
+import { ArrowUpDown, ChevronDown } from "lucide-react";
 import {
   Select,
   SelectContent,
@@ -35,7 +35,6 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { updateAdmission } from "@/actions/admissions";
-import Link from "next/link";
 
 
 // Define columns
