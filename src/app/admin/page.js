@@ -2,7 +2,6 @@
 import { getAdmissions } from "@/actions/admissions";
 import { getBatches } from "@/actions/batches";
 import { getCourses } from "@/actions/courses";
-// import { getStudents } from "@/actions/students";
 import { getApplicationsLength } from "@/actions/application";
 import { connectDB } from "@/lib/dbConnect";
 import { UserModal } from "@/lib/modals/UserModal";
@@ -14,7 +13,6 @@ export default async function Dashboard() {
   const { admissions } = await getAdmissions();
   const {batches} = await getBatches()
   const {courses} = await getCourses()
-  // const {users} =  getStudents()
   const {applications} = await getApplicationsLength()
   await connectDB();
     const users = await UserModal.find();

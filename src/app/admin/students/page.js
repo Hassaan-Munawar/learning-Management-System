@@ -1,10 +1,8 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-// import { getStudents } from "@/actions/students";
 import { connectDB } from "@/lib/dbConnect";
 import { UserModal } from "@/lib/modals/UserModal";
 
 export default async function Students(){
-    // const {users} = await getStudents()
     await connectDB();
     const users = await UserModal.find();
 
