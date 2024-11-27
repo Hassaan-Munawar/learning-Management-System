@@ -2,7 +2,7 @@
 import { getAdmissions } from "@/actions/admissions";
 import { getBatches } from "@/actions/batches";
 import { getCourses } from "@/actions/courses";
-// import { getStudents } from "@/actions/students";
+import { getStudents } from "@/actions/students";
 import { getApplicationsLength } from "@/actions/application";
 
 
@@ -12,7 +12,7 @@ export default async function Dashboard() {
   const { admissions } = await getAdmissions();
   const {batches} = await getBatches()
   const {courses} = await getCourses()
-  // const {users} = await getStudents()
+  const {users} = await getStudents()
   const {applications} = await getApplicationsLength()
 
 
@@ -31,7 +31,7 @@ export default async function Dashboard() {
       <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-6">
         <div className="p-4 bg-white rounded-md shadow-md">
           <h2 className="text-sm text-gray-500">Total Students</h2>
-          <p className="text-xl font-bold text-gray-700">0</p>
+          <p className="text-xl font-bold text-gray-700">{users.length}</p>
         </div>
         <div className="p-4 bg-white rounded-md shadow-md">
           <h2 className="text-sm text-gray-500">Total Courses</h2>
