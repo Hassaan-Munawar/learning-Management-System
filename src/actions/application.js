@@ -11,10 +11,7 @@ export async function getApplications({
   let applications = await fetch(
     `${process.env.BASE_URL}/api/application?admission=${admission || ""}&user=${
       user || ""
-    }&batch=${batch || ""}&course=${course || ""}`,
-    {
-      cache: "no-cache",
-    }
+    }&batch=${batch || ""}&course=${course || ""}`
   );
   applications = await applications.json();
   return applications;
@@ -52,7 +49,7 @@ export async function getApplicationsLength() {
 }
 
 export async function getSingleApplication(id) {
-  let userApplications = await fetch(`${process.env.BASE_URL}/api/application/${id}`,{cache:"no-cache"});
+  let userApplications = await fetch(`${process.env.BASE_URL}/api/application/${id}`);
   userApplications  = await userApplications.json();
   return  userApplications ;
 }

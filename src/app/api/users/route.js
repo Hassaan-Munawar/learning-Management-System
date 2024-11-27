@@ -1,9 +1,8 @@
 import { connectDB } from "@/lib/dbConnect";
 import { UserModal } from "@/lib/modals/UserModal";
 
-export async function GET(req) {
+export async function GET() {
   await connectDB();
-
   const users = await UserModal.find();
   return Response.json({
     error: false,

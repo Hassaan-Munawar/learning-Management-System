@@ -3,7 +3,7 @@
 import { revalidatePath } from "next/cache";
 
 export async function getCourses() {
-  let courses = await fetch(`${process.env.BASE_URL}/api/courses`,{cache:"no-cache"});
+  let courses = await fetch(`${process.env.BASE_URL}/api/courses`);
   courses = await courses.json();
   return courses;
 }

@@ -4,17 +4,14 @@ import { revalidatePath } from "next/cache";
 
 export async function getAdmissions(status="") {
   let admissions = await fetch(
-    `${process.env.BASE_URL}/api/admission?status=${status}`,
-    {
-      cache: "no-cache",
-    }
+    `${process.env.BASE_URL}/api/admission?status=${status}`
   );
   admissions = await admissions.json();
   return admissions;
 }
 
 export async function getSingleAdmission(id) {
-  let admission = await fetch(`${process.env.BASE_URL}/api/admission/${id}`,{cache:"no-cache"});
+  let admission = await fetch(`${process.env.BASE_URL}/api/admission/${id}`);
   admission = await admission.json();
   return admission;
 }
