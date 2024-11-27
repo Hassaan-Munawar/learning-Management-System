@@ -4,6 +4,7 @@ import { ApplicationModal } from "@/lib/modals/ApplicationModal";
 import { BatchModal } from "@/lib/modals/BatchModal";
 import { CourseModal } from "@/lib/modals/CourseModal";
 import { UserModal } from "@/lib/modals/UserModal";
+import { TrainerModal } from "@/lib/modals/TrainerModal";
 
 export async function GET() {
   await connectDB();
