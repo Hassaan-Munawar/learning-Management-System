@@ -62,7 +62,7 @@ export function BatchModal({ trainers , courses }) {
         <DrawerHeader className="text-left">
           <DrawerTitle>Add Batch</DrawerTitle>
         </DrawerHeader>
-        <BatchForm trainers={trainers} courses={courses} />
+        <BatchForm className="px-4" trainers={trainers} courses={courses} />
         <DrawerFooter className="pt-2">
           <DrawerClose asChild>
             <Button variant="outline">Cancel</Button>

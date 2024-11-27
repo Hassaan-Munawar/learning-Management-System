@@ -55,7 +55,7 @@ export function TrainerDialog() {
         <DrawerHeader className="text-left">
           <DrawerTitle>Add Trainer</DrawerTitle>
         </DrawerHeader>
-        <TrainerForm />
+        <TrainerForm className="px-4" />
         <DrawerFooter className="pt-2">
           <DrawerClose asChild>
             <Button variant="outline">Cancel</Button>

@@ -54,7 +54,7 @@ export function CourseDialog() {
         <DrawerHeader className="text-left">
           <DrawerTitle>Add Course</DrawerTitle>
         </DrawerHeader>
-        <CourseForm />
+        <CourseForm className="px-4" />
         <DrawerFooter className="pt-2">
           <DrawerClose asChild>
             <Button variant="outline">Cancel</Button>

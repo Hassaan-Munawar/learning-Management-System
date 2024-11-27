@@ -61,7 +61,7 @@ export function NewAdmissionModal({ courses, batches }) {
         <DrawerHeader className="text-left">
           <DrawerTitle>Add Admission</DrawerTitle>
         </DrawerHeader>
-        <BatchForm courses={courses} batches={batches} />
+        <BatchForm className="px-4" courses={courses} batches={batches} />
         <DrawerFooter className="pt-2">
           <DrawerClose asChild>
             <Button variant="outline">Cancel</Button>

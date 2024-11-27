@@ -24,7 +24,6 @@ import { useForm } from "react-hook-form";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -53,8 +52,8 @@ export function ApplicationModalForm({ admission}) {
     return (
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogTrigger asChild>
-          <div className="text-black">
-          <Button variant="outline">Apply</Button>
+          <div className="text-black w-full">
+          <Button className="w-full" variant="outline">Apply</Button>
           </div>
         </DialogTrigger>
         <DialogContent className="sm:max-w-[425px]">
@@ -74,15 +73,15 @@ export function ApplicationModalForm({ admission}) {
   return (
     <Drawer open={open} onOpenChange={setOpen}>
       <DrawerTrigger asChild>
-      <div className="text-black">
-        <Button variant="outline">Apply</Button>
+      <div className="text-black w-full">
+        <Button className="w-full" variant="outline">Apply</Button>
         </div>
       </DrawerTrigger>
       <DrawerContent>
         <DrawerHeader className="text-left">
           <DrawerTitle>Apply</DrawerTitle>
         </DrawerHeader>
-        <ApplicationForm admission={admission} session={session} setOpen={setOpen}  />
+        <ApplicationForm className="px-4" admission={admission} session={session} setOpen={setOpen}  />
         <DrawerFooter className="pt-2">
           <DrawerClose asChild>
             <Button variant="outline">Cancel</Button>
@@ -121,7 +120,7 @@ function ApplicationForm({ admission, session, setOpen }) {
   }
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 mx-4 md:mx-0">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-3 mx-4 md:mx-0">
         <FormField
           control={form.control}
           name="CNIC"
@@ -131,7 +130,6 @@ function ApplicationForm({ admission, session, setOpen }) {
               <FormControl>
                 <Input placeholder="Enter your CNIC" {...field} />
               </FormControl>
-              <FormDescription>Add valid CNIC number.</FormDescription>
               <FormMessage />
             </FormItem>
           )}
@@ -143,9 +141,8 @@ function ApplicationForm({ admission, session, setOpen }) {
             <FormItem>
               <FormLabel>DOB</FormLabel>
               <FormControl>
-                <Input type="date" placeholder="DOB" {...field} />
+                <Input type="date" placeholder="Enter your DOB" {...field} />
               </FormControl>
-              <FormDescription>Add valid DOB.</FormDescription>
               <FormMessage />
             </FormItem>
           )}
@@ -159,7 +156,6 @@ function ApplicationForm({ admission, session, setOpen }) {
               <FormControl>
                 <Textarea placeholder="Enter your address" {...field} />
               </FormControl>
-              <FormDescription>Add valid address.</FormDescription>
               <FormMessage />
             </FormItem>
           )}
