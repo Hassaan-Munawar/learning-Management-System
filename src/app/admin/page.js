@@ -12,7 +12,7 @@ export default async function Dashboard() {
   const { admissions } = await getAdmissions();
   const {batches} = await getBatches()
   const {courses} = await getCourses()
-  const {users} = await getStudents()
+  const {users} =  getStudents()
   const {applications} = await getApplicationsLength()
 
 
