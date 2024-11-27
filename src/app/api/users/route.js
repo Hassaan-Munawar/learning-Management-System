@@ -1,4 +1,8 @@
 import { connectDB } from "@/lib/dbConnect";
+import { AdmissionModal } from "@/lib/modals/AdmissionModal";
+import { ApplicationModal } from "@/lib/modals/ApplicationModal";
+import { BatchModal } from "@/lib/modals/BatchModal";
+import { CourseModal } from "@/lib/modals/CourseModal";
 import { UserModal } from "@/lib/modals/UserModal";
 
 export async function GET() {

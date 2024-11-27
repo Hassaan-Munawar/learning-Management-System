@@ -11,7 +11,7 @@ export async function getApplications({
   let applications = await fetch(
     `${process.env.BASE_URL}/api/application?admission=${admission || ""}&user=${
       user || ""
-    }&batch=${batch || ""}&course=${course || ""}`
+    }&batch=${batch || ""}&course=${course || ""}`,{cache:"no-cache"}
   );
   applications = await applications.json();
   return applications;
@@ -42,7 +42,7 @@ export async function updateApplication(id, status, admissionId) {
 
 export async function getApplicationsLength() {
   let applications = await fetch(
-    `${process.env.BASE_URL}/api/application`
+    `${process.env.BASE_URL}/api/application`,{cache:"no-cache"}
   );
   applications = await applications.json();
   return applications;
