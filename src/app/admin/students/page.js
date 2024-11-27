@@ -1,8 +1,8 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { getStudents } from "@/actions/students";
+// import { getStudents } from "@/actions/students";
 
 export default async function Students(){
-    const {users} = await getStudents()
+    // const {users} = await getStudents()
 
     return(
         <section className="bg-white rounded-md shadow-md mt-6">
@@ -18,7 +18,7 @@ export default async function Students(){
                 <th className="p-4 text-sm font-medium text-gray-500">Email</th>
               </tr>
             </thead>
-            <tbody>
+            {/* <tbody>
               {
                 users.map((data) => {
                   return (
@@ -39,7 +39,7 @@ export default async function Students(){
                   )
                 })
               }
-            </tbody>
+            </tbody> */}
           </table>
         </div>
       </section>
