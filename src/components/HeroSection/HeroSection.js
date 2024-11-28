@@ -11,7 +11,7 @@ export function HeroSection() {
       {/* Background Image */}
       <div className="absolute inset-0 opacity-20">
         <Image
-          src="https://plus.unsplash.com/premium_photo-1664303246428-bd684ae01231?w=1600&auto=format&fit=crop&q=80&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8YmFja2dyb3VuZCUyMGxlYXJuaW5nfGVufDB8fDB8fHww"
+          src="https://img.freepik.com/free-vector/online-training-infographics-layout-with-electronic-devices-students-professional-lecturer-gives-lessons-internet_1284-31495.jpg?t=st=1732765482~exp=1732769082~hmac=072c9eb2d95854b0853f600100e6c37a97350d3dabfa3c3935e3b3f5d2d66a59&w=900"
           alt="Learning background"
           layout="fill"
           objectFit="cover"
