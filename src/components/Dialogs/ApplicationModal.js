@@ -69,6 +69,7 @@ export function ApplicationModalForm({ admission}) {
       </Dialog>
     );
   }
+  
   return (
     <Drawer open={open} onOpenChange={setOpen}>
       <DrawerTrigger asChild>
