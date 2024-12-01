@@ -6,7 +6,8 @@ const trainerSchema = new Schema(
     {
         name: String,
         email: String,
-        qualification: String
+        qualification: String,
+        image:String
     },
     { timestamps: true }
 );

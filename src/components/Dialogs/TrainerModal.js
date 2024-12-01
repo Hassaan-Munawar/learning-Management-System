@@ -84,6 +84,10 @@ function TrainerForm({ className }) {
         <Label htmlFor="qualification">Qualification</Label>
         <Input required id="qualification" name={"qualification"} />
       </div>
+      <div className="grid gap-2">
+        <Label htmlFor="image">Image</Label>
+        <Input placeholder="Add Github Profile URL" required id="image" name={"image"} />
+      </div>
       <Button type="submit">Add Trainer</Button>
     </form>
   );

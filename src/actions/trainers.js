@@ -12,7 +12,8 @@ export async function addTrainer(formData) {
     const obj = {
         name: formData.get("name"),
         email: formData.get("email"),
-        qualification: formData.get("qualification")
+        qualification: formData.get("qualification"),
+        image:formData.get("image")
     };
 
     const trainer = await fetch(`${process.env.BASE_URL}/api/trainers`, {

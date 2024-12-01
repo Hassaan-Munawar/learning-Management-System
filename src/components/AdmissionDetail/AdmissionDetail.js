@@ -15,6 +15,7 @@ import { Separator } from "@/components/ui/separator"
 import { CalendarIcon, UserIcon, GraduationCapIcon, ClockIcon } from 'lucide-react'
 import { format } from "date-fns"
 import { updateApplication } from "@/actions/application"
+import { FaReact } from 'react-icons/fa';
 
 export default function AdmissionDetail({ admission }) {
   const handleEnroll = async (applicationId) => {
@@ -78,6 +79,13 @@ export default function AdmissionDetail({ admission }) {
     <h2 className="text-3xl font-bold mb-8 text-blue-800 text-center">
       Applications
     </h2>
+    {
+      admission.applications.length == 0 ? <div className="flex flex-col items-center justify-center h-[50vh] p-4 rounded-md bg-white shadow-xl text-blue-800">
+      <FaReact className="text-6xl mb-4 text-blue-500" />
+      <h1 className="text-2xl text-center font-semibold">No Applications Found</h1>
+      <p className="mt-2 text-center text-lg">Please check back later or add new applications.</p>
+    </div> :
+    
     <div className="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
       {admission.applications.map((application) => (
         <Card
@@ -159,7 +167,7 @@ export default function AdmissionDetail({ admission }) {
           </CardFooter>
         </Card>
       ))}
-    </div>
+    </div>}
   </div>
   
     

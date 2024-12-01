@@ -1,5 +1,6 @@
 import { getTrainers } from "@/actions/trainers";
 import { TrainerDialog } from "@/components/Dialogs/TrainerModal";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 export default async function Trainers() {
     const { trainers } = await getTrainers()
@@ -17,6 +18,7 @@ export default async function Trainers() {
                     <table className="w-full table-auto text-center">
                         <thead className="bg-gray-100">
                             <tr>
+                                <th className="p-4 text-sm font-medium text-gray-500">Profile</th>
                                 <th className="p-4 text-sm font-medium text-gray-500">Name</th>
                                 <th className="p-4 text-sm font-medium text-gray-500">Email</th>
                                 <th className="p-4 text-sm font-medium text-gray-500">Qualification</th>
@@ -27,7 +29,15 @@ export default async function Trainers() {
                                 trainers.map((data) => {
                                     return (
                                         <tr key={data._id} className="border-b">
-
+                                            <td className="p-4 flex justify-center text-gray-600"> <Avatar className="h-12 w-12">
+                                                <AvatarImage
+                                                    src={data.image}
+                                                    alt={data.name}
+                                                />
+                                                <AvatarFallback>
+                                                    {data.name.charAt(0)}
+                                                </AvatarFallback>
+                                            </Avatar></td>
                                             <td className="p-4 text-gray-600">{data.name}</td>
                                             <td className="p-4 text-gray-600">{data.email}</td>
                                             <td className="p-4 text-gray-600">{data.qualification}</td>
