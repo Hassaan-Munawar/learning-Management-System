@@ -99,7 +99,7 @@ export default function ApplicationCard({ application }) {
             <span>Application ID: {application._id}</span>
           </div>
           {
-            application.status == 'enrolled' ? <Button className='bg-blue-700 hover:bg-blue-600'> <Link href={`lectures/${application.course._id}`}>View Lectures</Link> </Button> :null
+            application.status == 'enrolled' ?  <Link href={`lectures/${application.course._id}`}><Button className='bg-blue-700 w-full hover:bg-blue-600'>View Lectures</Button></Link>  :null
           }
         </div>
       </CardContent>
