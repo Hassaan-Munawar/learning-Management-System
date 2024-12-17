@@ -7,6 +7,8 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { CalendarIcon, MapPinIcon, UserIcon } from "lucide-react";
+import { Button } from "../ui/button";
+import Link from "next/link";
 
 export default function ApplicationCard({ application }) {
   return (
@@ -15,9 +17,15 @@ export default function ApplicationCard({ application }) {
         <CardTitle className="text-2xl font-bold">Application Details</CardTitle>
         <Badge
           variant={"secondary" }
-          className="text-sm bg-white text-blue-700 px-3 py-1 rounded-full"
+          className={`text-sm bg-white px-3 py-1 rounded-full ${
+            application.status === "enrolled"
+              ? "text-green-600"
+              : application.status === "rejected"
+              ? "text-red-600"
+              : "text-blue-700"
+          }`}
         >
-          {application.status.toUpperCase()}
+         {application.status.charAt(0).toUpperCase() + application.status.slice(1).toLowerCase()}
         </Badge>
       </CardHeader>
       <CardContent>
@@ -90,6 +98,9 @@ export default function ApplicationCard({ application }) {
             </span>
             <span>Application ID: {application._id}</span>
           </div>
+          {
+            application.status == 'enrolled' ? <Button className='bg-blue-700 hover:bg-blue-600'> <Link href={`lectures/${application.course._id}`}>View Lectures</Link> </Button> :null
+          }
         </div>
       </CardContent>
     </Card>
