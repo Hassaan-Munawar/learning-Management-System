@@ -2,6 +2,8 @@ import { authOptions } from "@/app/api/auth/[...nextauth]/route"
 import { getServerSession } from "next-auth"
 import Image from "next/image"
 import lms from '../../../../public/lms.png'
+import { redirect } from "next/navigation";
+
 
 
 export default async function Lectures() {
