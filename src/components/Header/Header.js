@@ -18,7 +18,7 @@ export default function Header() {
   };
 
   return (
-    <header className="sticky top-0 bg-blue-600 place-content-center text-white h-[10vh] md:h-[11vh] shadow-md z-50">
+    <header className="sticky top-0 bg-blue-600 place-content-center text-white h-[10vh] lg:h-[11vh] shadow-md z-50">
       <div className="flex justify-between items-center px-4 py-4 md:py-0">
         <Link href="/" className="flex items-center">
           <span className="font-bold text-xl">LMS</span>
