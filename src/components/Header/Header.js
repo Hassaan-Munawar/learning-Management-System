@@ -78,7 +78,7 @@ export default function Header() {
                 <button
                   onClick={() => signOut()}
                   className={cn(
-                    "bg-red-600 hover:bg-red-500 text-white px-4 py-2 rounded-md text-sm transition-all duration-300 ease-in-out transform hover:scale-105"
+                    "bg-red-600 border-2 border-red-600 text-white px-4 py-1 rounded-sm transition-all duration-300 ease-in-out transform hover:scale-105"
                   )}
                 >
                   Sign out
@@ -115,19 +115,19 @@ export default function Header() {
             className="md:hidden text-white focus:outline-none"
           >
             <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-            </svg>
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M4 6h16M4 12h16m-7 6h7"
+                />
+              </svg>
           </button>
         )}
       </div>
@@ -179,9 +179,9 @@ export default function Header() {
                 />
               )}
             </div>
-            <div className="text-sm text-white">
-              <p className="font-medium">{session.user.name}</p>
-              <p className="text-xs opacity-75">{session.user.email}</p>
+            <div className="text-white">
+              <p className="font-medium text-md">{session.user.name}</p>
+              <p className="text-sm opacity-75">{session.user.email}</p>
             </div>
             <button
               onClick={() => {
@@ -189,7 +189,7 @@ export default function Header() {
                 closeMobileMenu();
               }}
               className={cn(
-                "bg-red-600 hover:bg-red-500 text-white px-4 py-2 rounded-md text-sm transition-all duration-300 ease-in-out transform hover:scale-105"
+                "bg-red-600 border-2 border-red-600 text-white px-4 py-1 rounded-sm transition-all duration-300 ease-in-out transform hover:scale-105"
               )}
             >
               Sign out
